@@ -12,4 +12,4 @@ export interface FetchGames {
   results: Game[];
 }
 
-export default create('/xgames');
+export default create('/games');
