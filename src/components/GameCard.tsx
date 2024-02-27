@@ -11,6 +11,7 @@ import {
   Image,
 } from '@chakra-ui/react';
 import { Game } from '../services/games-service';
+import PlatformIconList from './PlatformIconList';
 
 interface Prop {
   game: Game;
@@ -23,11 +24,9 @@ const GameCard = ({ game }: Prop) => {
         <Image src={game.background_image} borderRadius="lg" />
         <Stack mt="6" spacing="3">
           <Heading size="md">{game.name}</Heading>
-          <Text>
-            This sofa is perfect for modern tropical spaces, baroque inspired
-            spaces, earthy toned spaces and for people who love a chic design
-            with a sprinkle of vintage design.
-          </Text>
+          <PlatformIconList
+            platforms={game.parent_platforms.map((p) => p.platform)}
+          />
           <Text color="blue.600" fontSize="2xl">
             $450
           </Text>
