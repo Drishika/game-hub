@@ -1,10 +1,6 @@
 import {
-  Button,
-  ButtonGroup,
   Card,
   CardBody,
-  CardFooter,
-  Divider,
   Heading,
   Image,
   HStack,
@@ -20,7 +16,7 @@ interface Prop {
 
 const GameCard = ({ game }: Prop) => {
   return (
-    <Card width='300px' borderRadius='10px' overflow='hidden'>
+    <Card>
       <CardBody>
         <Image src={getCroppedImageUrl(game.background_image)} borderRadius="lg" />
         <Heading size="md">{game.name}</Heading>
@@ -31,17 +27,6 @@ const GameCard = ({ game }: Prop) => {
           <CriticScore score={game.metacritic} />
         </HStack>
       </CardBody>
-      <Divider />
-      <CardFooter>
-        <ButtonGroup spacing="2">
-          <Button variant="solid" colorScheme="blue">
-            Buy now
-          </Button>
-          <Button variant="ghost" colorScheme="blue">
-            Add to cart
-          </Button>
-        </ButtonGroup>
-      </CardFooter>
     </Card>
   );
 };
