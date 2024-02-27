@@ -6,12 +6,12 @@ import {
   CardFooter,
   Divider,
   Heading,
-  Stack,
-  Text,
   Image,
+  HStack,
 } from '@chakra-ui/react';
 import { Game } from '../services/games-service';
 import PlatformIconList from './PlatformIconList';
+import CriticScore from './CriticScore';
 
 interface Prop {
   game: Game;
@@ -19,18 +19,16 @@ interface Prop {
 
 const GameCard = ({ game }: Prop) => {
   return (
-    <Card maxW="sm">
+    <Card maxW="sm" borderRadius='10px'>
       <CardBody>
         <Image src={game.background_image} borderRadius="lg" />
-        <Stack mt="6" spacing="3">
-          <Heading size="md">{game.name}</Heading>
+        <Heading size="md">{game.name}</Heading>
+        <HStack justifyContent="space-between">
           <PlatformIconList
             platforms={game.parent_platforms.map((p) => p.platform)}
           />
-          <Text color="blue.600" fontSize="2xl">
-            $450
-          </Text>
-        </Stack>
+          <CriticScore score={game.metacritic} />
+        </HStack>
       </CardBody>
       <Divider />
       <CardFooter>
