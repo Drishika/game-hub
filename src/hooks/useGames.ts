@@ -6,7 +6,7 @@ import create from '../services/games-service';
 const useGames = () => {
   const [games, setGames] = useState<Game[]>([]);
   const [error, setError] = useState('');
-  const [loading, setLoading] = useState(false);
+  const [isLoading, setLoading] = useState(false);
 
   useEffect(() => {
     setLoading(true);
@@ -23,7 +23,7 @@ const useGames = () => {
       });
     return () => cancel();
   }, []);
-  return { games, loading, error };
+  return { games, isLoading, error };
 };
 
 export default useGames;
