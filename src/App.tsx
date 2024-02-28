@@ -2,7 +2,7 @@ import { Grid, GridItem, Show } from '@chakra-ui/react';
 import './App.css';
 import Navbar from './components/Navbar';
 import GamesList from './components/GamesList';
-import Genre from './components/Genre';
+import Genre from './components/GenreList';
 
 function App() {
   return (
