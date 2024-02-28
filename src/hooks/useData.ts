@@ -1,24 +1,27 @@
 import { useEffect, useState } from 'react';
-import { AxiosError, CanceledError } from 'axios';
+import { AxiosError, AxiosRequestConfig, CanceledError } from 'axios';
 import create from '../services/http-service';
 
- interface FetchResponse<T> {
-    count: number;
-    next: string;
-    prev: string;
-    results: T[];
-  }
-  
-  
+interface FetchResponse<T> {
+  count: number;
+  next: string;
+  prev: string;
+  results: T[];
+}
 
-const useData = <T>(endpoint: string) => {
+const useData = <T>(
+  endpoint: string,
+  requestConfig?: AxiosRequestConfig,
+  deps?: any[]
+) => {
   const [data, setData] = useState<T[]>([]);
   const [error, setError] = useState('');
   const [isLoading, setLoading] = useState(false);
 
   useEffect(() => {
     setLoading(true);
-    const { request, cancel } = create(endpoint).getAll<FetchResponse<T>>();
+    const { request, cancel } =
+      create(endpoint).getAll<FetchResponse<T>>(requestConfig);
     request
       .then((res) => {
         setData(res.data.results);
@@ -30,7 +33,7 @@ const useData = <T>(endpoint: string) => {
         setLoading(false);
       });
     return () => cancel();
-  }, []);
+  }, deps? [...deps]:[]);
   return { data, isLoading, error };
 };
 
