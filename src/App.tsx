@@ -25,7 +25,7 @@ function App() {
       </GridItem>
       <Show above="lg">
         <GridItem area="aside" paddingX={5}>
-          <GenreList handleSelectGenre={handleSelectGenre}  />
+          <GenreList selectedGenre={selectedGenre} handleSelectGenre={handleSelectGenre}  />
         </GridItem>
       </Show>
 
