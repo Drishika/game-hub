@@ -13,6 +13,7 @@ export interface GameQuery {
   genre: Genre | null;
   platform: Platform | null;
   sortOrder: string;
+  searchInput?: string;
 }
 function App() {
   const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
@@ -25,7 +26,11 @@ function App() {
       templateColumns={{ base: '1fr', lg: '200px 1fr' }}
     >
       <GridItem area="nav">
-        <Navbar />
+        <Navbar
+          onSearchSubmit={(searchInput) =>
+            setGameQuery({ ...gameQuery, searchInput })
+          }
+        />
       </GridItem>
 
       <Show above="lg">
@@ -45,7 +50,8 @@ function App() {
               setGameQuery({ ...gameQuery, platform })
             }
           />
-          <SortSelector currentSortField={gameQuery.sortOrder}
+          <SortSelector
+            currentSortField={gameQuery.sortOrder}
             onSelectSortOrder={(sortOrder) =>
               setGameQuery({ ...gameQuery, sortOrder })
             }
