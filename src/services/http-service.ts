@@ -8,11 +8,9 @@ class HttpService {
     this.endpoint = endpoint;
   }
   getAll<T>(requestParam?: AxiosRequestConfig) {
-    const controller = new AbortController();
-    const request = apiClient.get<T>(this.endpoint, {
-      signal: controller.signal,...requestParam
-    });
-    return { request, cancel: () => controller.abort() };
+    //const controller = new AbortController();
+    apiClient.get<T>(this.endpoint, {...requestParam});
+    //return { request, cancel: () => controller.abort() };
   }
 }
 

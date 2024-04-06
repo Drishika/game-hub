@@ -16,7 +16,7 @@ const GamesList = ({ gameQuery }: Prop) => {
   ];
   return (
     <>
-      {error && <Text>{error}</Text>}
+      {error && <Text>{error.message}</Text>}
       <SimpleGrid
         spacing={6}
         padding="10px"
@@ -29,7 +29,7 @@ const GamesList = ({ gameQuery }: Prop) => {
             </GameCardContainer>
           ))}
         {data &&
-          data.map((game) => (
+          data.results.map((game) => (
             <GameCardContainer key={game.id}>
               <GameCard game={game}></GameCard>
             </GameCardContainer>

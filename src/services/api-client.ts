@@ -1,5 +1,12 @@
 import axios, { CanceledError } from 'axios';
 
+export interface FetchResponse<T> {
+  count: number;
+  next?: string;
+  prev?: string;
+  results: T[];
+}
+
 const apiClient = axios.create({
   baseURL: 'https://api.rawg.io/api',
   params: {

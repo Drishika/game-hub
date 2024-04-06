@@ -1,11 +1,11 @@
-import { useEffect, useState } from 'react';
+/*import { useEffect, useState } from 'react';
 import { AxiosError, AxiosRequestConfig, CanceledError } from 'axios';
 import create from '../services/http-service';
 
-interface FetchResponse<T> {
+export interface FetchResponse<T> {
   count: number;
-  next: string;
-  prev: string;
+  next?: string;
+  prev?: string;
   results: T[];
 }
 
@@ -38,3 +38,4 @@ const useData = <T>(
 };
 
 export default useData;
+*/
