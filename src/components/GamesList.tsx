@@ -4,13 +4,9 @@ import GameCard from './GameCard';
 import GameCardSkeleton from './GameCardSkeleton';
 import GameCardContainer from './GameCardContainer';
 
-import { GameQuery } from '../App';
 
-interface Prop {
-  gameQuery: GameQuery | null;
-}
-const GamesList = ({ gameQuery }: Prop) => {
-  const { data, isLoading, error } = useGames(gameQuery);
+const GamesList = () => {
+  const { data, isLoading, error } = useGames();
   const skeletons = [
     1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
   ];
